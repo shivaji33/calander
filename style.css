@@ -1,0 +1,62 @@
+body {
+  font-family: 'Send Flowers', cursive;
+}
+
+.container {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .grid > .cell-group, .dates-wrapper > .cell-group {
+    display: flex;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .header > .date-display {
+    font-weight: bold;
+    color: #04AA6D;
+  }
+
+  .btn-prev, .btn-next, .back-to-today {
+    background-color: #04AA6D;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: #ffffff;
+    min-width: 100px;
+    font-family: 'Send Flowers', cursive;
+    cursor: pointer;
+  }
+
+.cell {
+  height: 50px;
+  width: 70px;
+  text-align: center;
+  line-height: 50px;
+  background-color: blue;
+  color: #ffffff;
+  font-weight: bold;
+}
+.today {
+  background-color: #04AA6D;
+}
+
+@media (max-width: 500px) {
+  .grid {
+    margin: auto;
+  }
+  .cell {
+    font-size:  10px;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+  }
+}

@@ -61,6 +61,7 @@ function viewCalender() {
     for (let j = 1; j <= 7; j++) {
       const day = document.createElement("div");
       day.className = "date-cell";
+      day.tabIndex = 0;
       if (i + "" + j === 1 + "" + firstDay || isValidCell) {
         if (!isValidCell) {
           isValidCell = true;

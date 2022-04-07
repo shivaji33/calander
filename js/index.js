@@ -60,12 +60,13 @@ function viewCalender() {
     dayRow.className = "cell-group";
     for (let j = 1; j <= 7; j++) {
       const day = document.createElement("div");
-      day.className = "cell";
+      day.className = "date-cell";
       if (i + "" + j === 1 + "" + firstDay || isValidCell) {
         if (!isValidCell) {
           isValidCell = true;
         }
         if (k <= lastDate) {
+          day.id = (today.getMonth() + 1) + '-' + k;
           day.innerHTML = k;
           if (k === today.getDate()) {
             day.classList.add("today");
@@ -74,12 +75,16 @@ function viewCalender() {
         } else {
           nextMonthCells++;
           day.innerHTML = nextMonthCells;
+          day.id = (today.getMonth() + 2) + '-' + nextMonthCells;
+          day.style.color = 'rgb(194 184 184)';
         }
       } else {
         const lastMonthLastDate = lastDateOfMonth(today.getFullYear(), today.getMonth() - 1);
         const prevMonthDate = lastMonthLastDate - (firstDay - 2) + prevMonthCells;
         prevMonthCells++;
         day.innerHTML = prevMonthDate;
+        day.id = today.getMonth() + '-' + prevMonthDate;
+        day.style.color = 'rgb(194 184 184)';
       }
       dayRow.appendChild(day);
     }
@@ -116,3 +121,17 @@ document.querySelector(".back-to-today").addEventListener("click", () => {
   document.querySelector(".dates-wrapper").innerHTML = "";
   viewCalender();
 });
+
+const dateCells = [...document.querySelectorAll('.date-cell')]
+
+dateCells.forEach(date => {
+  date.addEventListener('click', () => {
+    dateCells.forEach(d => {
+       if (date.id === d.id) {
+        date.classList.add('selected-date');
+      } else {
+        d.classList.remove('selected-date');
+      }
+    })
+  });
+})
